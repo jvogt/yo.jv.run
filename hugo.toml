@@ -16,4 +16,4 @@ target = 'static/attachments'
 
 [[deployment.targets]]
 name = "production"
-URL = "s3://jvogt-websites/yo.jv.run/?region=us-west-1"
+URL = "s3://yo.jv.run/?region=us-east-1"
