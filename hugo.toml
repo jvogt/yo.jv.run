@@ -15,9 +15,5 @@ target = 'static/attachments'
 [deployment]
 
 [[deployment.targets]]
-# An arbitrary name for this target.
 name = "production"
-
-# Amazon Web Services S3; see https://gocloud.dev/howto/blob/#s3
-# For S3-compatible endpoints, see https://gocloud.dev/howto/blob/#s3-compatible
-URL = "s3://yo.jv.run?region=us-east-1"
+URL = "s3://jvogt-websites/yo.jv.run"
