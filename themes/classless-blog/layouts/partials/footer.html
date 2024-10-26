@@ -1,0 +1,42 @@
+<!-- Links to special pages -->
+{{ range (where .Site.RegularPages "Type" "not in" site.Params.mainSections) }}
+<a href="{{ .Permalink }}">
+  {{ .Title }}
+</a>
+<br>
+{{ end }}
+
+<!-- visable link to RSS-Feed -->
+<a href="{{ "index.xml" | absLangURL }}" target="_blank">
+  RSS-Feed
+</a>
+<script type="text/javascript">
+// Select elements
+const mediaContainer = document.querySelector('.media-container');
+const overlay = mediaContainer.querySelector('.iframe-overlay');
+const modal = document.getElementById('media-modal');
+const modalIframe = modal.querySelector('.modal-iframe');
+const closeBtn = modal.querySelector('.close-btn');
+
+// Open the modal and load the iframe source when clicking the overlay
+overlay.addEventListener('click', () => {
+    const iframeSrc = mediaContainer.querySelector('.embed').src;
+    modalIframe.src = iframeSrc;
+    modal.style.display = 'flex'; // Make the modal visible
+});
+
+// Close the modal and stop the video playback
+closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    modalIframe.src = ''; // Reset the iframe to stop playback
+});
+
+// Optional: Close modal on click outside the content
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+        modalIframe.src = '';
+    }
+});
+</script>
+

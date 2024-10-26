@@ -1,0 +1,44 @@
+name: Publish Blog
+
+on: push
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+
+      # CHEKCOUT REPOSITORY
+
+      - name: Git checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '${{ env.HUGO_VERSION }}'
+          extended: true
+
+      - name: Cache Hugo
+        uses: actions/cache@v3
+        with:
+          path: /tmp/hugo_cache
+          key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugomod-            
+
+      - name: Build Blog
+        env:
+          TZ: 'America/Los_Angeles'
+        run: hugo --minify
+
+      # DEPLOY TO REMOTE SERVER
+      - name: Hugo Deploy
+        run: hugo deploy
+        env:
+          AWS_REGION: 'us-west-1'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

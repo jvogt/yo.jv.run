@@ -1,0 +1,19 @@
+baseURL = 'https://yo.jv.run/'
+languageCode = 'en-us'
+title = 'Where is Jeff?'
+theme = 'classless-blog'
+
+[module]
+[[module.mounts]]
+source = 'static'
+target = 'static'
+
+[[module.mounts]]
+source = 'attachments'
+target = 'static/attachments'
+
+[deployment]
+
+[[deployment.targets]]
+name = "production"
+URL = "s3://yo.jv.run/?region=us-east-1"
