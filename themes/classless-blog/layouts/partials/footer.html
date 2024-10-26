@@ -10,21 +10,35 @@
 <a href="{{ "index.xml" | absLangURL }}" target="_blank">
   RSS-Feed
 </a>
+<div id="media-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <iframe class="modal-iframe" allowfullscreen></iframe>
+    </div>
+</div>
 <script type="text/javascript">
-// Select all media containers
-const mediaContainers = document.querySelectorAll('.media-container');
+
+// Select elements
+const mediaContainers = document.querySelectorAll('.media-container-container');
 
 // Loop through each media container and bind event listeners
 mediaContainers.forEach((container) => {
-    const overlay = container.querySelector('.iframe-overlay');
-    const modal = container.querySelector('.media-modal'); // Adjust selector for individual modals
+
+    const mediaContainer = container.querySelector('.media-container');
+    const divWithAspect = mediaContainer.querySelector('.embed')
+    const overlay = mediaContainer.querySelector('.iframe-overlay');
+    const modal = document.getElementById('media-modal');
     const modalIframe = modal.querySelector('.modal-iframe');
     const closeBtn = modal.querySelector('.close-btn');
 
+    const aspectRatio = parseFloat(divWithAspect.style.paddingBottom) / 100
+
     // Open the modal and load the iframe source when clicking the overlay
     overlay.addEventListener('click', () => {
-        const iframeSrc = container.querySelector('.embed').src;
+        const iframeSrc = mediaContainer.querySelector('.i-embed').src;
         modalIframe.src = iframeSrc;
+        modal.style.width = '100%';
+        modal.style.height = `100vw`;
         modal.style.display = 'flex'; // Make the modal visible
     });
 

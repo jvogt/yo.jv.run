@@ -133,37 +133,20 @@ Renders an embedded YouTube video.
     
 
     {{- /* Render. */}}
-    <div class="embed" {{ $divClassOrStyle | safeHTMLAttr }}>
-      <iframe
-        {{- range $k, $v := $iframeAttributes }}
-          {{- if $v }}
-            {{- printf " %s=%q" $k $v | safeHTMLAttr }}
-          {{- end }}
-        {{- end }}
-      ></iframe>
+    <div class="media-container-container">
+      <div class="media-container">
+        <div class="iframe-overlay"></div>
+        <div class="embed" {{ $divClassOrStyle | safeHTMLAttr }}>
+          <iframe class="i-embed"
+            {{- range $k, $v := $iframeAttributes }}
+              {{- if $v }}
+                {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+              {{- end }}
+            {{- end }}
+          ></iframe>
+        </div>
+      </div>
     </div>
-<div class="media-container">
-    <div class="iframe-overlay">Open Video</div>
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-            class="embed" 
-            allowfullscreen></iframe>
-
-    <div class="media-modal" style="display: none;">
-        <iframe class="modal-iframe"></iframe>
-        <button class="close-btn">Close</button>
-    </div>
-</div>
-  <div class="media-container">
-    <div class="iframe-overlay"></div> 
-</div>
-
-<!-- Modal Structure -->
-<div id="media-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <iframe class="modal-iframe" allowfullscreen></iframe>
-    </div>
-</div>
 
   {{- else }}
     {{- errorf "The %q shortcode requires an id argument. See %s" .Name .Position }}
