@@ -20,6 +20,7 @@ const closeBtn = modal.querySelector('.close-btn');
 
 // Open the modal and load the iframe source when clicking the overlay
 overlay.addEventListener('click', () => {
+    console.log('a');
     const iframeSrc = mediaContainer.querySelector('.embed').src;
     modalIframe.src = iframeSrc;
     modal.style.display = 'flex'; // Make the modal visible
@@ -27,12 +28,14 @@ overlay.addEventListener('click', () => {
 
 // Close the modal and stop the video playback
 closeBtn.addEventListener('click', () => {
+    console.log('b');
     modal.style.display = 'none';
     modalIframe.src = ''; // Reset the iframe to stop playback
 });
 
 // Optional: Close modal on click outside the content
 window.addEventListener('click', (e) => {
+    console.log('c');
     if (e.target === modal) {
         modal.style.display = 'none';
         modalIframe.src = '';
