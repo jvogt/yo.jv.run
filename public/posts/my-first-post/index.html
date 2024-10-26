@@ -45,7 +45,7 @@
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/0RKpf3rK57I?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
       ></iframe>
     </div>
-
+<div class="testv">
     <div class="media-container">
     <div class="iframe-overlay"></div> 
     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
@@ -59,6 +59,7 @@
         <span class="close-btn">&times;</span>
         <iframe class="modal-iframe" allowfullscreen></iframe>
     </div>
+</div>
 </div>
 <p>Content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content</p>
 <p><img src="../../attachments/896CBEE0-24E3-444C-A190-6055CF343BC3_1_105_c.jpeg" alt=""></p>
@@ -74,7 +75,7 @@
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/q-OjY_cccf8?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
       ></iframe>
     </div>
-
+<div class="testv">
     <div class="media-container">
     <div class="iframe-overlay"></div> 
     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
@@ -88,6 +89,7 @@
         <span class="close-btn">&times;</span>
         <iframe class="modal-iframe" allowfullscreen></iframe>
     </div>
+</div>
 </div>
 <p>Content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content</p>
 
@@ -105,34 +107,40 @@
 </a>
 <script type="text/javascript">
 
-const mediaContainer = document.querySelector('.media-container');
-const overlay = mediaContainer.querySelector('.iframe-overlay');
-const modal = document.getElementById('media-modal');
-const modalIframe = modal.querySelector('.modal-iframe');
-const closeBtn = modal.querySelector('.close-btn');
+const mediaContainers = document.querySelectorAll('.testv');
 
 
-overlay.addEventListener('click', () => {
-    console.log('a');
-    const iframeSrc = mediaContainer.querySelector('.embed').src;
-    modalIframe.src = iframeSrc;
-    modal.style.display = 'flex'; 
-});
+mediaContainers.forEach((container) => {
 
+    const mediaContainer = container.querySelector('.media-container');
+    const overlay = mediaContainer.querySelector('.iframe-overlay');
+    const modal = container.querySelector('#media-modal');
+    const modalIframe = modal.querySelector('.modal-iframe');
+    const closeBtn = modal.querySelector('.close-btn');
 
-closeBtn.addEventListener('click', () => {
-    console.log('b');
-    modal.style.display = 'none';
-    modalIframe.src = ''; 
-});
+    
+    overlay.addEventListener('click', () => {
+        console.log('a');
+        const iframeSrc = mediaContainer.querySelector('.embed').src;
+        modalIframe.src = iframeSrc;
+        modal.style.display = 'flex'; 
+    });
 
-
-window.addEventListener('click', (e) => {
-    console.log('c');
-    if (e.target === modal) {
+    
+    closeBtn.addEventListener('click', () => {
+        console.log('b');
         modal.style.display = 'none';
-        modalIframe.src = '';
-    }
+        modalIframe.src = ''; 
+    });
+
+    
+    window.addEventListener('click', (e) => {
+        console.log('c');
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            modalIframe.src = '';
+        }
+    });
 });
 </script>
 

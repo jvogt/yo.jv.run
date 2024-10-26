@@ -12,34 +12,40 @@
 </a>
 <script type="text/javascript">
 // Select elements
-const mediaContainer = document.querySelector('.media-container');
-const overlay = mediaContainer.querySelector('.iframe-overlay');
-const modal = document.getElementById('media-modal');
-const modalIframe = modal.querySelector('.modal-iframe');
-const closeBtn = modal.querySelector('.close-btn');
+const mediaContainers = document.querySelectorAll('.testv');
 
-// Open the modal and load the iframe source when clicking the overlay
-overlay.addEventListener('click', () => {
-    console.log('a');
-    const iframeSrc = mediaContainer.querySelector('.embed').src;
-    modalIframe.src = iframeSrc;
-    modal.style.display = 'flex'; // Make the modal visible
-});
+// Loop through each media container and bind event listeners
+mediaContainers.forEach((container) => {
 
-// Close the modal and stop the video playback
-closeBtn.addEventListener('click', () => {
-    console.log('b');
-    modal.style.display = 'none';
-    modalIframe.src = ''; // Reset the iframe to stop playback
-});
+    const mediaContainer = container.querySelector('.media-container');
+    const overlay = mediaContainer.querySelector('.iframe-overlay');
+    const modal = container.querySelector('#media-modal');
+    const modalIframe = modal.querySelector('.modal-iframe');
+    const closeBtn = modal.querySelector('.close-btn');
 
-// Optional: Close modal on click outside the content
-window.addEventListener('click', (e) => {
-    console.log('c');
-    if (e.target === modal) {
+    // Open the modal and load the iframe source when clicking the overlay
+    overlay.addEventListener('click', () => {
+        console.log('a');
+        const iframeSrc = mediaContainer.querySelector('.embed').src;
+        modalIframe.src = iframeSrc;
+        modal.style.display = 'flex'; // Make the modal visible
+    });
+
+    // Close the modal and stop the video playback
+    closeBtn.addEventListener('click', () => {
+        console.log('b');
         modal.style.display = 'none';
-        modalIframe.src = '';
-    }
+        modalIframe.src = ''; // Reset the iframe to stop playback
+    });
+
+    // Optional: Close modal on click outside the content
+    window.addEventListener('click', (e) => {
+        console.log('c');
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            modalIframe.src = '';
+        }
+    });
 });
 </script>
 

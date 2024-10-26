@@ -42,6 +42,7 @@ const closeBtn = modal.querySelector('.close-btn');
 
 
 overlay.addEventListener('click', () => {
+    console.log('a');
     const iframeSrc = mediaContainer.querySelector('.embed').src;
     modalIframe.src = iframeSrc;
     modal.style.display = 'flex'; 
@@ -49,12 +50,14 @@ overlay.addEventListener('click', () => {
 
 
 closeBtn.addEventListener('click', () => {
+    console.log('b');
     modal.style.display = 'none';
     modalIframe.src = ''; 
 });
 
 
 window.addEventListener('click', (e) => {
+    console.log('c');
     if (e.target === modal) {
         modal.style.display = 'none';
         modalIframe.src = '';
