@@ -142,12 +142,19 @@ Renders an embedded YouTube video.
         {{- end }}
       ></iframe>
     </div>
-
-    <div class="media-container">
-    <div class="iframe-overlay"></div> 
+<div class="media-container">
+    <div class="iframe-overlay">Open Video</div>
     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
             class="embed" 
             allowfullscreen></iframe>
+
+    <div class="media-modal" style="display: none;">
+        <iframe class="modal-iframe"></iframe>
+        <button class="close-btn">Close</button>
+    </div>
+</div>
+  <div class="media-container">
+    <div class="iframe-overlay"></div> 
 </div>
 
 <!-- Modal Structure -->
