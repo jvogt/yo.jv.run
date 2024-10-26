@@ -37,8 +37,8 @@ mediaContainers.forEach((container) => {
     overlay.addEventListener('click', () => {
         const iframeSrc = mediaContainer.querySelector('.i-embed').src;
         modalIframe.src = iframeSrc;
-        modal.style.width = '100%';
-        modal.style.height = `100vw`;
+        modal.style.width = '100vw';
+        modal.style.height = `100vh`;
         modal.style.display = 'flex'; // Make the modal visible
     });
 

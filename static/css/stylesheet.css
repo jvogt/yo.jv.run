@@ -1742,17 +1742,17 @@ body > footer {
 .modal-content {
   position: absolute;
   top: 0%;
-  left: 5%;
-  width: 90%;
-  height: 90%;
+  left: 2.5%;
+  width: 95%;
+  height: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-iframe {
-    width: 90%;
-    height: 90%;
+    width: 95%;
+    height: 95%;
     border: none;
 }
 
